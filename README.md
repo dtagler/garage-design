@@ -1,59 +1,42 @@
 [![Garage Design](docs/assets/garagedesign-logo.svg)](docs/assets/garagedesign-logo.svg)
 
-```text
-  GARAGE DESIGN
-  ============================================================
-  [ ][ ][ ][ ]   Measure the garage.
-  [ ][##][##][ ] Design the floor.
-  [ ][##][##][ ] Compare real tile products.
-  [ ][ ][ ][ ]   Price the complete plan before ordering.
-  ============================================================
-```
+# Design it. Price it. Build with confidence.
 
-# Plan the floor before buying the tiles
+Garage Design turns an empty garage into a floor plan you can actually buy. Enter the room and door
+measurements, explore hundreds of layouts, compare real drainable tile products, and see the cuts,
+packages, ramps, leftovers, and estimated cost before ordering.
 
-Garage Design is a browser-based planner for modular garage flooring. Enter the garage dimensions,
-choose a layout, compare verified drainable tile products, and get an order estimate that accounts
-for cuts, waste, package sizes, ramps, Illinois tax, and known shipping rules.
+<p align="center">
+  <img src="docs/screenshots/garage-designer.png" alt="Garage Design showing a measured two-door garage beside its modular tile floor plan">
+</p>
 
-The default plan is sized for a 230 by 246 inch garage, but every measurement can be changed.
+## Go from a rough idea to a purchase plan
 
-## What it does
+- **See the finished floor.** Model the garage walls and door openings, then preview the tile field
+  at the room's real proportions.
+- **Find a look that fits.** Start from 250 original borders, checkerboards, parking bays, stripes,
+  racing patterns, and showroom designs.
+- **Make it yours.** Change the palette or paint individual squares by clicking, dragging, touching,
+  or using the keyboard.
+- **Compare products honestly.** Map the design to verified drainable tiles and the colors each
+  product actually offers.
+- **Know what to order.** Calculate whole tiles, cuts, waste, boxes, individual tiles, ramps,
+  leftovers, Illinois tax, and known shipping rules.
 
-- Models one, two, three, or custom garage-door openings.
-- Includes 250 original border, checker, parking, racing, and showroom layouts.
-- Supports tile-by-tile painting and drag painting with mouse, touch, or pen.
-- Keeps full tiles along the front and right edges of the clearance-reduced tile field, moving
-  required cuts to the back and left.
-- Compares verified open-grid products from Swisstrax, RaceDeck, VEVOR, ModuTile, Greatmats,
-  FlooringInc, and TrueLock.
-- Maps the selected design to colors each product actually offers.
-- Calculates tile quantities by color, waste, packages, leftovers, ramps, tax, and shipping status.
-- Saves plans in browser storage and exports a PNG or printable project report.
+| Explore 250 layouts                                                                                                | Turn the design into an order estimate                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="docs/screenshots/design-library.png" alt="Checker and grid designs in the Garage Design layout library"> | <img src="docs/screenshots/project-estimate.png" alt="Garage Design project summary with product details, floor preview, quantities, and cost"> |
 
-## From measurements to an order estimate
+## Built around the decisions that cost money
 
-```text
-Garage dimensions and doors
-              |
-              v
-Choose one of 250 layouts
-              |
-              v
-Customize colors or paint individual tiles
-              |
-              v
-Compare compatible drainable products
-              |
-              v
-Review cuts, packages, ramps, tax, and shipping
-              |
-              v
-Save or export the plan
-```
+Garage Design does more than divide square footage by tile size. Full tiles begin at the front and
+right edges of the usable tile field, keeping cuts away from the garage doors. The estimate follows
+the package sizes sellers publish, plans transition ramps for each opening, separates known costs
+from unknown shipping, and shows what will be left after installation.
 
-The entire workflow stays on one page. Each section appears when the decisions above it are
-complete, so the garage, design, product comparison, and estimate remain visible together.
+Compare verified open-grid products from Swisstrax, RaceDeck, VEVOR, ModuTile, Greatmats,
+FlooringInc, and TrueLock. Save promising plans in the browser, download the exact floor drawing,
+or open a print-ready project report when it is time to review the order.
 
 ## Run with Docker
 
