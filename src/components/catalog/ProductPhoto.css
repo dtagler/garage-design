@@ -1,0 +1,53 @@
+/*
+ * Product photography is loaded from the seller's own host and is display only. Nothing here is
+ * used by the export renderers: a remote bitmap taints an export canvas, and a shared PNG or PDF
+ * must not carry a third party's photograph.
+ */
+
+.product-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.product-photo__link {
+  display: block;
+  border: 1px solid #34414c;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.product-photo__link:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.product-photo__image,
+.product-photo__artwork {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  background-color: rgb(255 255 255 / 6%);
+}
+
+.product-photo__caption {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.product-photo__attribution {
+  display: inline;
+  color: var(--color-text-muted);
+}
+
+.product-photo__date {
+  white-space: nowrap;
+  opacity: 0.8;
+}

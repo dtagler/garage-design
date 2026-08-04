@@ -1,0 +1,693 @@
+/* Industrial night worksheet with graphite surfaces, steel rules, and amber instrument light. */
+
+.planner {
+  --planner-ink: #edf2f5;
+  --planner-ink-soft: #a3b0ba;
+  --planner-paper: #11171c;
+  --planner-surface-soft: #0c1217;
+  --planner-paper-edge: #2e3a44;
+  --planner-line: #526574;
+  --planner-accent: #f2a23b;
+  --planner-accent-strong: #ffc16d;
+  --planner-accent-ink: #17110a;
+  --planner-danger: #ff7b6e;
+
+  --font-display:
+    Bahnschrift, 'DIN Alternate', 'Roboto Condensed', 'Franklin Gothic Medium', 'Arial Narrow',
+    sans-serif;
+  --font-body: Aptos, 'Segoe UI Variable Text', 'Segoe UI', 'Trebuchet MS', sans-serif;
+  --font-numeric: 'Cascadia Mono', 'SF Mono', Consolas, ui-monospace, monospace;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--planner-ink);
+  font-family: var(--font-body);
+}
+
+/* Sections ----------------------------------------------------------------- */
+
+.planner__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem clamp(1.1rem, 2vw, 2.25rem) 1.75rem;
+  border: 1px solid var(--planner-paper-edge);
+  border-top: 4px solid var(--planner-ink);
+  border-radius: 0.9rem;
+  box-shadow:
+    0 1rem 2.4rem rgba(0, 0, 0, 0.32),
+    inset 0 1px rgba(255, 255, 255, 0.025);
+  background-color: var(--planner-paper);
+  background-image:
+    linear-gradient(rgba(155, 184, 202, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 184, 202, 0.035) 1px, transparent 1px);
+  background-size: 2.75rem 2.75rem;
+}
+
+.planner__section:focus-visible {
+  outline: 3px solid var(--planner-accent);
+  outline-offset: 4px;
+}
+
+.planner__section-heading {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--planner-line);
+}
+
+.planner__section-heading h2 {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.planner__lede {
+  margin: 0;
+  max-width: 72ch;
+  color: var(--planner-ink-soft);
+  font-size: 0.95rem;
+}
+
+.planner__cue {
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--planner-line);
+  color: var(--planner-accent-strong);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.planner__cue--blocked {
+  color: var(--planner-danger);
+}
+
+/* The only layout grid in the planner: controls left, one drawing right. */
+.planner__two-column {
+  display: grid;
+  grid-template-columns: minmax(20rem, 27rem) minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  align-items: start;
+}
+
+.planner__controls,
+.planner__details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+/* Controls ----------------------------------------------------------------- */
+
+.planner__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.9rem 1rem 1.1rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.65rem;
+  background-color: var(--planner-surface-soft);
+}
+
+.planner__group legend {
+  padding: 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--planner-ink-soft);
+}
+
+.planner__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.planner__field label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--planner-ink-soft);
+}
+
+.planner__field input,
+.planner__field select,
+.planner__segments input,
+.planner__segments select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.4rem;
+  background-color: #080d11;
+  color: var(--planner-ink);
+  font-family: var(--font-numeric);
+  font-size: 1rem;
+}
+
+.planner__field input[aria-invalid='true'] {
+  border-color: var(--planner-danger);
+  border-left-width: 4px;
+}
+
+.planner__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.planner__colors .planner__field {
+  flex: 1 1 8rem;
+}
+
+.planner__inline-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.planner__inline-choices label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.planner__hint {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--planner-ink-soft);
+  font-size: 0.85rem;
+}
+
+.planner__error {
+  margin: 0;
+  color: var(--planner-danger);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.planner__status {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--planner-accent);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background-color: rgba(242, 162, 59, 0.1);
+  font-size: 0.9rem;
+}
+
+.planner button {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.planner__group button,
+.planner__panel button,
+.planner__segments button {
+  align-self: flex-start;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--planner-ink);
+  border-radius: 0.4rem;
+  background-color: transparent;
+  color: var(--planner-ink);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.planner__group button:hover,
+.planner__panel button:hover,
+.planner__segments button:hover {
+  background-color: rgba(145, 177, 197, 0.1);
+}
+
+.planner .planner__primary {
+  align-self: flex-start;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--planner-accent-strong);
+  border-radius: 0.45rem;
+  background-color: var(--planner-accent);
+  color: var(--planner-accent-ink);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.planner .planner__primary:hover:not(:disabled) {
+  background-color: var(--planner-accent-strong);
+}
+
+.planner .planner__primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Door segments ------------------------------------------------------------ */
+
+.planner__segments ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.planner__segments li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.planner__segments input {
+  width: 6rem;
+}
+
+/* Pattern chooser ---------------------------------------------------------- */
+
+.planner__patterns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.9rem 1rem 1.1rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.65rem;
+  background-color: var(--planner-surface-soft);
+}
+
+.planner__patterns legend {
+  padding: 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--planner-ink-soft);
+}
+
+.planner__preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-height: 22rem;
+  margin: 0;
+  padding: 0.25rem;
+  overflow-y: auto;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.45rem;
+  background-color: var(--planner-paper);
+  list-style: none;
+}
+
+.planner__preset {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.planner__preset:hover {
+  border-color: var(--planner-line);
+  background-color: rgba(242, 162, 59, 0.08);
+}
+
+.planner__preset:has(input:checked) {
+  border-color: var(--planner-accent);
+  background-color: rgba(242, 162, 59, 0.15);
+}
+
+.planner__preset--custom {
+  margin-top: 0.35rem;
+  border-color: var(--planner-line);
+}
+
+.planner__preset-thumbnail {
+  flex: none;
+  width: 3.2rem;
+  height: 2rem;
+  border: 1px solid var(--planner-ink);
+}
+
+.planner__preset-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.planner__preset-label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.planner__preset-category {
+  color: var(--planner-accent-strong);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.planner__preset-description {
+  color: var(--planner-ink-soft);
+  font-size: 0.8rem;
+}
+
+/* Canvas ------------------------------------------------------------------- */
+
+.planner__canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.7rem;
+  box-shadow:
+    0 0.6rem 1.5rem rgba(0, 0, 0, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.025);
+  background-color: #080d11;
+}
+
+.planner__canvas figcaption {
+  color: var(--planner-ink-soft);
+  font-size: 0.82rem;
+}
+
+.planner-canvas__svg,
+.exact-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+}
+
+.planner__canvas--wide {
+  position: sticky;
+  top: 1rem;
+}
+
+.planner__canvas--wide .exact-preview {
+  max-height: 76vh;
+}
+
+.planner-canvas__svg:focus-visible {
+  outline: 3px solid var(--planner-accent);
+  outline-offset: 3px;
+}
+
+/* Product explorer --------------------------------------------------------- */
+
+.planner__product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 78vh;
+  margin: 0;
+  padding: 0.35rem;
+  overflow-y: auto;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.6rem;
+  background-color: var(--planner-surface-soft);
+  list-style: none;
+}
+
+.planner__product-option label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.5rem;
+  background-color: #11181e;
+  cursor: pointer;
+}
+
+.planner__product-option--active label {
+  border-color: var(--planner-accent);
+}
+
+.planner__product-option label:has(input:checked) {
+  border-left: 4px solid var(--planner-accent);
+  background-color: rgba(242, 162, 59, 0.09);
+}
+
+.planner__product-option label:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.planner__product-photo {
+  flex: none;
+  width: 6rem;
+}
+
+.planner__product-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.planner__product-brand {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--planner-accent-strong);
+}
+
+.planner__product-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.planner__product-style,
+.planner__product-fact,
+.planner__product-drainage {
+  color: var(--planner-ink-soft);
+  font-size: 0.8rem;
+}
+
+.planner__product-fact {
+  font-family: var(--font-numeric);
+}
+
+.planner__product-issue {
+  color: var(--planner-danger);
+  font-size: 0.8rem;
+}
+
+.planner__product-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 1rem 1.15rem 1.25rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.28);
+  background-color: #11181e;
+}
+
+.planner__product-detail h3,
+.planner__panel h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.planner__product-detail .product-photo {
+  max-width: 18rem;
+}
+
+/* Summary ------------------------------------------------------------------ */
+
+.planner__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem 1.25rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.5rem 1.3rem rgba(0, 0, 0, 0.25);
+  background-color: #11181e;
+}
+
+.planner__facts {
+  display: grid;
+  grid-template-columns: minmax(8rem, auto) minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  margin: 0;
+}
+
+.planner__facts > div {
+  display: contents;
+}
+
+.planner__facts dt {
+  color: var(--planner-ink-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.planner__facts dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.planner__plain-list,
+.planner__color-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.planner__swatch {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.4rem;
+  border: 1px solid var(--planner-ink);
+  vertical-align: -1px;
+}
+
+.planner__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.planner__table caption {
+  margin-bottom: 0.4rem;
+  color: var(--planner-ink-soft);
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.planner__table th,
+.planner__table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--planner-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.planner__table thead th {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--planner-ink-soft);
+}
+
+.planner__table tbody td {
+  font-family: var(--font-numeric);
+}
+
+.planner__cut-note {
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--planner-accent);
+  background-color: rgba(242, 162, 59, 0.1);
+  font-size: 0.9rem;
+}
+
+.planner__disclaimer {
+  margin: 0;
+  color: var(--planner-ink-soft);
+  font-size: 0.75rem;
+}
+
+.planner__saved-plans {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.planner__saved-plans li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--planner-line);
+}
+
+.planner__saved-plans li span {
+  flex: 1;
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+}
+
+/* The shared export panel sits inside the summary, so it inherits the paper surface. */
+.planner .export-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem 1.25rem;
+  border: 1px solid var(--planner-line);
+  border-radius: 0.7rem;
+  background-color: #11181e;
+  color: var(--planner-ink);
+}
+
+.planner .export-controls h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.planner .export-controls button {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--planner-ink);
+  border-radius: 0.4rem;
+  background-color: transparent;
+  color: var(--planner-ink);
+  cursor: pointer;
+}
+
+.planner .export-controls button:hover:not(:disabled) {
+  background-color: rgba(145, 177, 197, 0.1);
+}
+
+.planner .export-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.planner .export-controls__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Narrow desktop windows stack the controls above the drawing. Never three columns. */
+@media (max-width: 78rem) {
+  .planner__two-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .planner__canvas--wide {
+    position: static;
+  }
+
+  .planner__product-list {
+    max-height: 40vh;
+  }
+}

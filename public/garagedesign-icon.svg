@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">GarageDesign icon</title>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18232b"/>
+      <stop offset="1" stop-color="#090d11"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc16d"/>
+      <stop offset="1" stop-color="#e88b22"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="25" fill="url(#panel)"/>
+  <path d="M25 37 64 17l39 20v68H25Z" fill="none" stroke="#dce6eb" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M38 50h52v55H38Z" fill="#10171c" stroke="#526574" stroke-width="3"/>
+  <g fill="#26333d" stroke="#7890a0" stroke-width="1.5">
+    <path d="M42 54h13v13H42zM57.5 54h13v13h-13zM73 54h13v13H73z"/>
+    <path d="M42 69.5h13v13H42zM57.5 69.5h13v13h-13zM73 69.5h13v13H73z"/>
+    <path d="M42 85h13v16H42zM57.5 85h13v16h-13zM73 85h13v16H73z"/>
+  </g>
+  <path d="M42 85h13v16H42zM57.5 69.5h13V101h-13zM73 54h13v47H73z" fill="url(#amber)"/>
+  <path d="M35 105h58" stroke="#ffc16d" stroke-width="5" stroke-linecap="round"/>
+</svg>

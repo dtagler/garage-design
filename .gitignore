@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Build output
+dist/
+dist-image/
+dist-ssr/
+*.local
+
+# Test and tooling output
+coverage/
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+.cache/
+.vite/
+*.tsbuildinfo
+*.tmp
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.npmrc
+.yarnrc
+.yarnrc.*
+.netrc
+_netrc
+auth.json
+secrets.json
+service-account*.json
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+
+# Editor and OS noise
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+out.txt

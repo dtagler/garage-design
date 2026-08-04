@@ -1,0 +1,67 @@
+# Every command runs in a container; nothing is installed on the host.
+# One-shot commands:  docker compose run --rm toolchain npm run lint
+# Long-running dev:   docker compose up dev
+
+x-npm-env: &npm-env
+  NPM_CONFIG_REGISTRY: ${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org/}
+  NPM_CONFIG_UPDATE_NOTIFIER: 'false'
+  NPM_CONFIG_FUND: 'false'
+  HOME: /tmp/garagedesign-home
+  NPM_CONFIG_CACHE: /tmp/garagedesign-npm-cache
+  # Windows and macOS bind mounts do not deliver inotify events, so the Vite and
+  # Vitest watchers need polling to see host edits.
+  VITE_DEV_POLLING: 'true'
+
+x-toolchain: &toolchain
+  build:
+    context: .
+    target: dev
+    args:
+      NPM_CONFIG_REGISTRY: ${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org/}
+  image: garagedesign-toolchain
+  user: '${LOCAL_UID:-1000}:${LOCAL_GID:-1000}'
+  working_dir: /app
+  volumes:
+    - .:/app
+    - node_modules:/app/node_modules
+  environment: *npm-env
+
+services:
+  # Generic entry point for install, format, lint, type-check, unit tests and build.
+  toolchain:
+    <<: *toolchain
+    command: ['node', '--version']
+
+  dev:
+    <<: *toolchain
+    command: ['npm', 'run', 'dev']
+    ports:
+      - '127.0.0.1:5173:5173'
+
+  preview:
+    <<: *toolchain
+    command: ['sh', '-c', 'npm run build && npm run preview']
+    ports:
+      - '127.0.0.1:4173:4173'
+
+  # Browser tests. The official Playwright image already contains matching browsers,
+  # and Playwright starts `vite preview` itself, so no extra service is required.
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.61.1-noble
+    user: '${LOCAL_UID:-1000}:${LOCAL_GID:-1000}'
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    environment:
+      <<: *npm-env
+      CI: 'true'
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+      # Point at an already running server, e.g. http://preview:4173, to skip the built-in one.
+      E2E_BASE_URL: ${E2E_BASE_URL:-}
+    # Chromium needs more than the default 64 MB of /dev/shm; this keeps the IPC namespace isolated.
+    shm_size: '1gb'
+    command: ['npm', 'run', 'test:e2e']
+
+volumes:
+  node_modules:

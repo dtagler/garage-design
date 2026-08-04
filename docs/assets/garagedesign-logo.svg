@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" role="img" aria-labelledby="title desc">
+  <title id="title">GarageDesign</title>
+  <desc id="desc">GarageDesign wordmark with a modular tile garage symbol.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18232b"/>
+      <stop offset="0.58" stop-color="#0d1318"/>
+      <stop offset="1" stop-color="#090d11"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc16d"/>
+      <stop offset="1" stop-color="#e88b22"/>
+    </linearGradient>
+    <pattern id="draft-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#8baabe" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="1120" height="280" rx="32" fill="url(#background)"/>
+  <rect width="1120" height="280" rx="32" fill="url(#draft-grid)"/>
+  <path d="M48 0v280" stroke="#f2a23b" stroke-width="9"/>
+
+  <g transform="translate(88 49)">
+    <path d="M12 58 92 16l80 42v139H12Z" fill="none" stroke="#dce6eb" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M38 78h108v119H38Z" fill="#10171c" stroke="#526574" stroke-width="5"/>
+    <g fill="#26333d" stroke="#7890a0" stroke-width="2">
+      <path d="M46 87h27v27H46zM78.5 87h27v27h-27zM111 87h27v27h-27z"/>
+      <path d="M46 119.5h27v27H46zM78.5 119.5h27v27h-27zM111 119.5h27v27h-27z"/>
+      <path d="M46 152h27v36H46zM78.5 152h27v36h-27zM111 152h27v36h-27z"/>
+    </g>
+    <path d="M46 152h27v36H46zM78.5 119.5h27V188h-27zM111 87h27v101h-27z" fill="url(#amber)"/>
+    <path d="M30 199h124" stroke="#ffc16d" stroke-width="9" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(310 72)">
+    <text
+      x="0"
+      y="88"
+      fill="#edf2f5"
+      font-family="Bahnschrift, DIN Condensed, Arial Narrow, sans-serif"
+      font-size="102"
+      font-stretch="condensed"
+      font-weight="700"
+      letter-spacing="3"
+    >GARAGE<tspan fill="#ffc16d">DESIGN</tspan></text>
+    <path d="M3 111h693" stroke="#526574" stroke-width="2"/>
+    <text
+      x="3"
+      y="148"
+      fill="#a3b0ba"
+      font-family="Cascadia Mono, Consolas, monospace"
+      font-size="22"
+      letter-spacing="5"
+    >MEASURE  /  DESIGN  /  PRICE</text>
+  </g>
+</svg>
