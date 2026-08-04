@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "description": "GarageDesign modular garage tile layout and cost planner.",
+  "license": "MIT",
   "engines": {
     "node": ">=24"
   },

@@ -121,3 +121,7 @@ Garage Design handles rectangular garages with configurable openings along the f
 not model cabinets, lifts, drains, columns, stairs, recesses, irregular rooms, installation labor,
 live inventory, or retailer checkout. Shipping remains unknown unless a published rule can be
 verified for the selected product and order.
+
+## License
+
+Garage Design is available under the [MIT License](LICENSE).
